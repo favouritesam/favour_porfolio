@@ -1,26 +1,89 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply transition-colors duration-500;
+  }
+
+  html.dark,
+  html.dark body {
+    @apply bg-slate-900 text-white;
+  }
+
+  html.light,
+  html.light body {
+    @apply bg-slate-50 text-slate-900;
+  }
+
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r bg-clip-text text-transparent;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html.dark .text-gradient,
+  .theme-dark .text-gradient {
+    @apply from-purple-400 to-blue-400;
+  }
+
+  html.light .text-gradient,
+  .theme-light .text-gradient {
+    @apply from-purple-600 to-blue-600;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom scrollbar - Dark theme */
+html.dark ::-webkit-scrollbar,
+.theme-dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+html.dark ::-webkit-scrollbar-track,
+.theme-dark ::-webkit-scrollbar-track {
+  @apply bg-slate-800;
+}
+
+html.dark ::-webkit-scrollbar-thumb,
+.theme-dark ::-webkit-scrollbar-thumb {
+  @apply bg-purple-600 rounded-full;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover,
+.theme-dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-purple-500;
+}
+
+/* Custom scrollbar - Light theme */
+html.light ::-webkit-scrollbar,
+.theme-light ::-webkit-scrollbar {
+  width: 8px;
+}
+
+html.light ::-webkit-scrollbar-track,
+.theme-light ::-webkit-scrollbar-track {
+  @apply bg-slate-200;
+}
+
+html.light ::-webkit-scrollbar-thumb,
+.theme-light ::-webkit-scrollbar-thumb {
+  @apply bg-purple-400 rounded-full;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover,
+.theme-light ::-webkit-scrollbar-thumb:hover {
+  @apply bg-purple-500;
+}
+
+/* Theme transition animations */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }
