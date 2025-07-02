@@ -71,7 +71,7 @@ export default function ContactSection() {
                                 required
                                 value={formData.name}
                                 onChange={handleChange}
-                                placeholder="John Doe"
+                                placeholder="favour Nwadike"
                                 className="w-full px-4 py-3 bg-[#1c1c2e] border border-gray-700 rounded-lg text-white"
                             />
                         </div>
@@ -84,7 +84,7 @@ export default function ContactSection() {
                                 required
                                 value={formData.email}
                                 onChange={handleChange}
-                                placeholder="JohnDoe@gmail.com"
+                                placeholder="nwadikefavour12@gmail.com"
                                 className="w-full px-4 py-3 bg-[#1c1c2e] border border-gray-700 rounded-lg text-white"
                             />
                         </div>
